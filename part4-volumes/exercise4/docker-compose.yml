@@ -1,0 +1,21 @@
+services:
+  exams-service:
+    build: ./exams-service
+  booking-service:
+    build: ./booking-service
+    ports:
+      - "8002:8002"
+    environment:
+      EXAMS_URL: http://exams-service:8000
+      DB_HOST: db
+    depends_on:
+      - exams-service
+      - db
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: esse4
+      POSTGRES_PASSWORD: esse4
+      POSTGRES_DB: esse4
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
