@@ -6,6 +6,7 @@ services:
     ports:
       - "8002:8002"
     environment:
+      # Isn't this URL suspicious ? 
       EXAMS_URL: http://localhost:8000
       DB_HOST: db
     depends_on:

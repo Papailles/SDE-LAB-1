@@ -19,3 +19,7 @@ services:
       POSTGRES_DB: esse4
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - bookings_data:/var/lib/postgresql/data
+
+volumes:
+  bookings_data:
